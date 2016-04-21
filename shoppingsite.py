@@ -60,11 +60,19 @@ def show_melon(melon_id):
 def shopping_cart():
     """Display content of shopping cart."""
 
-    cart 
+    # cart 
     # way to get cart list from the add_to_cart function
-    for item in cart:
+    # for item in cart:
+
+    melons_ids = session.get('shopping_cart', 0)
+    for item in melons_ids:
+        
+    print melons_ids
+
+    # for melon_id in shopping_cart:
 
 
+    # print shopping_cart
 
 
 
@@ -90,19 +98,15 @@ def add_to_cart(id):
     page and display a confirmation message: 'Successfully added to cart'.
     """
 
-    # if session has a cart list already,
-    # then add to that list
-    # else
-    # create the cart and add the id
-
-    session['melon'] = id
-
-    cart = []
-
-    if id not in cart:
-        cart.append(id)
+    if 'cart' in session:
+        shopping_cart = session['cart']
     else:
-        cart
+        session['cart'] = []
+        shopping_cart = session['cart']
+
+    shopping_cart.append(id)
+
+    print shopping_cart
 
     flash("We added that melon to your cart")
     return redirect("/cart")
